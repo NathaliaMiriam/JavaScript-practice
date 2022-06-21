@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>
+    
+    <h1>Curso - JavaScript</h1>
+
+    <script>
+
+    //função literal
+    function somar (n1, n2){
+        //corpo da função
+        return n1 + n2;
+    }
+
+    var soma = somar (10, 20);
+    console.log('Resultado: ', soma); 
+
+    
+    //de primeira classe
+    somar.teste = 'Propriedade da função';
+    console.log(somar.teste);
+
+    var teste = function(str){
+    console.log('Teste', str);
+    };
+    teste('Olá');
+
+
+    //por parâmetro
+    var teste = function(f){
+        f();
+    };
+    teste(function(){
+    console.log('Função passada por parâmetro');
+    });
+
+
+    //escopo de variáveis 
+    var x = 0; //var escopo global (está fora)
+
+    function mostraX(){
+        var x = 10; //var escopo local (está dentro de uma função)
+        console.log("Mostrar x: " , x);
+    }
+
+    mostraX();
+    console.log("Mostrar x: " , x);
+
+
+    //auto-executáveis (IIFE)
+    (function(){
+        var isValid = false;
+    })();
+    console.log(isValid);
+
+
+    // //auto-executáveis (IIFE)
+    (function(){
+        "use strict";
+        var isValid = false;
+        console.log(isValid);
+    })();
+
+
+    //argumentos passados por parâmetro   
+        function somar (){
+            console.log(arguments);
+            var result = 0;
+            var x = 0;
+            
+            while(arguments[x]){
+                // result = result + arguments[x];
+                result += arguments[x];
+                // x = x + 1;
+                x++;
+            }
+
+            console.log('Result: ', result);
+        }      
+
+        somar(20, 20, 10, 10);   
+
+    </script>
+
+</body>
+</html>
