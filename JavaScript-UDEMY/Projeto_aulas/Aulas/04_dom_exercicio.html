@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício</h1> 
+
+    <!-- <p> Mostrar na tela (div com um #msg) uma mensagem de boas-vindas. 
+        Ex.: Bem-vinda, Nathália!! O nome do usuário pode ser uma var cujo valor foi digitado pelo prompt().</p> -->
+    
+    <div id="msg"></div>  
+
+    <script>
+        (function(){
+            var nome = prompt('Digite o seu nome');
+            document.querySelector('#msg').textContent = 'Bem-vinda, ' + nome + '!!';
+        })()
+
+    </script> 
+</body>
+</html>

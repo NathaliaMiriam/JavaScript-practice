@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício</h1> 
+
+    <!-- <p> Temos duas variáveis chamadas nome e sobrenome com valores definidos.
+        Mostrar estas variáveis concatenadas num input type="text" e 
+        deixar este input desabilitado. </p> -->
+
+    <input type="text" id="txtNome" value="digite" disabled>    
+
+        <script>
+    
+            var $txt = document.querySelector('txtNome');
+            var nome = 'Nat ';
+            var sobrenome = 'Miriam';
+
+            document.querySelector('#txtNome').value = nome + sobrenome;
+
+        </script> 
+</body>
+</html>

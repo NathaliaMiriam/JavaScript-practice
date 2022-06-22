@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício</h1> 
+
+    <!-- <p> Mostrar na tela (div com um #msg) uma mensagem de boas-vindas. 
+        Ex.: Bem-vinda, Nathália!! Com o nome do usuário digitado num input e deve
+        estar em negrito.</p> -->
+
+    <input type="text" id="txtNome" value="digite">   
+
+    <button onclick="escreve()">Clique aqui</button>
+
+    <div id="msg"></div>  
+
+        <script>
+        var txtNome2 = document.querySelector('#txtNome');
+
+        function escreve(){
+            var nome = txtNome2.value;
+            document.querySelector('#msg').innerHTML = 'Bem-vinda, <b>' + nome + '</b>' + '!!'
+        }
+
+        </script> 
+</body>
+</html>
