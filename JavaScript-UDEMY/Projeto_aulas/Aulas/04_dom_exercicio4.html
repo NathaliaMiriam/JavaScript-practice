@@ -13,15 +13,16 @@
         Mostrar estas variáveis concatenadas num input type="text" e 
         deixar este input desabilitado. </p> -->
 
-    <input type="text" id="txtNome" value="digite" disabled>    
+    <input type="text" id="txtNome" value="digite">    
 
         <script>
     
-            var $txt = document.querySelector('txtNome');
+            var $txt = document.querySelector('#txtNome');
             var nome = 'Nat ';
             var sobrenome = 'Miriam';
 
             document.querySelector('#txtNome').value = nome + sobrenome;
+            document.querySelector('#txtNome').disabled = true;
 
         </script> 
 </body>
