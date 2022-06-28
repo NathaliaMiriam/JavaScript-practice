@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+    <script src="beluga.js"></script>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício</h1> 
+
+            <!-- Temos 3 objetos. Cada objeto tem duas propriedades: nome e sobrenome.
+            Mostrar no console o nome completo de cada um deles. -->
+
+            <!-- Posso criar um objeto literal, formal ou utilizando um construtor. -->
+
+            <!-- No exercício será utilizada a sintaxe literal. -->
+
+        <script> 
+            
+            var pessoa1 = {
+                nome: 'Nat',
+                sobrenome: 'Miriam'
+            };
+
+            var pessoa2 = {
+                nome: 'Yan',
+                sobrenome: 'Maciel'
+            };
+
+            var pessoa3 = {
+                nome: 'Teddy',
+                sobrenome: 'José'
+            };
+
+            for(var i = 1; i <= 3; i++){
+                console.log(window['pessoa'+i].nome + ' ' + window['pessoa'+i].sobrenome);
+            }
+
+        </script> 
+</body>
+</html>
