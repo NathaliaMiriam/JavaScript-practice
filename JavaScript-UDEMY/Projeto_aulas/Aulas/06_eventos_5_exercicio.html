@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício 1</h1> 
+
+        <!-- Validar um form de login (usuário e senha) ao clicar no botão de envio.
+        Se tiver algum campo vazio deve ser mostrado um alert e impedir o envio. -->
+
+        <form action="#">
+            <label for="txtUser"> Usuário </label><input type="text" id="txtUser" name="user"><br>
+            <label for="txtPass"> Senha </label><input type="password" id="txtPass" name="pass"><br>
+            <button type="button" id="btn">Logar</button>   
+        </form>
+
+
+        <script> 
+            (function(){
+                'use strict';
+                var $txtUser = document.getElementById('txtUser');
+                var $txtPass = document.getElementById('txtPass');
+                var $btn = document.getElementById('btn');
+
+                $btn.addEventListener('click', function(){
+                    alert('clicou no botão');
+
+                    if(!$txtUser.value || !$txtPass.value){
+                        alert('Preencha todos os campos');
+                    }
+                });
+            })()
+
+        </script> 
+</body>
+</html>

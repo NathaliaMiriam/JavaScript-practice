@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript - Exercício 2</h1> 
+
+        <!-- Validar um form de login (usuário e senha) pelo submit.
+        Se tiver algum campo vazio deve ser mostrado um alert e impedir o envio. 
+        Com o submit o form é enviado. -->
+
+        <form action="#" method="POST">     
+            <label for="txtUser"> Usuário </label><input type="text" id="txtUser" name="user"><br>
+            <label for="txtPass"> Senha </label><input type="password" id="txtPass" name="pass"><br>
+            <button type="submit" id="btn">Logar</button>   
+        </form>
+
+
+        <script> 
+            (function(){
+                'use strict';
+                var $form = document.querySelector('form');
+                var $txtUser = document.getElementById('txtUser');
+                var $txtPass = document.getElementById('txtPass');
+                var $btn = document.getElementById('btn');
+
+                $form.addEventListener('submit', function(e){
+                    if(!$txtUser.value || !$txtPass.value){
+                        alert('Preencha todos os campos');
+                        e.preventDefault(); //preventDefault - previne o comportamento padrão
+                        //ou seja, o preventDefault ñ permite, neste caso, o envio do form sem usuário ou senha    
+                    }
+                });
+            })()
+
+        </script> 
+</body>
+</html>

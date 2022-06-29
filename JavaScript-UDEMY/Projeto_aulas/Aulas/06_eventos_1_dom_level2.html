@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+<body>    
+    <h1>Curso - JavaScript</h1> 
+
+        <div class="container">
+            <button id="btn1">botão 1</button>
+            <button id="btn2">botão 2</button>
+            <button id="btn3">botão 3</button>
+        </div>
+
+        <script> 
+            var btn1 = document.getElementById('btn1');
+            var btn2 = document.getElementById('btn2');
+            var btn3 = document.getElementById('btn3');         
+
+            //aqui é level 2
+            //é necessário pelo menos 2 parâmetros dentro do addEventListener (tipo do evento e função a ser executada)
+           
+            btn1.addEventListener('click', function(){
+                alert('clique com dom level 2');
+            });
+           
+            btn2.addEventListener('click', function(){
+                alert('clique com dom level 2');
+            });
+           
+            btn3.addEventListener("click", function(){
+                alert('clique com dom level 2');
+            });
+
+            btn3.addEventListener("click", function(){
+                alert('clique com dom level 2 em outro evento');
+            });
+
+            //aqui ñ é level 2 - mostrando apenas a diferença p incluir + de um evento
+            btn3.onclick = function(){
+                alert('Olá, mundo');
+                alert('Como vai?');
+            }
+
+        </script> 
+</body>
+</html>
