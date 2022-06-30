@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+    <body>    
+        <h1>Curso - JavaScript - Exercício 4</h1> 
+
+        <!-- Permitir o envio de um form somente após o usuário aceitar os termos do contrato (checkbox).
+             Para este ex., habilitar ou desabilitar o botão dependo do checkbox. -->            
+
+        <div>
+            <form action="#">
+                <textarea cols="50" rows="10" readonly>Contrato de prestação de serviço</textarea>
+            </form>
+
+            <label>
+                <input type="checkbox" id="chk" checked> Li e aceito os termos
+            </label> <br>
+
+            <input type="submit" value="Continuar" id="btn">
+        </div>
+
+        <script> 
+        
+            (function(){
+                'use strict';
+
+                var $btn = document.getElementById('btn');
+                var $chk = document.getElementById('chk');
+
+               alternarBtn(); //está chamando a função .. lá debaixo
+
+                $chk.addEventListener('change', function(){ //change = quando mudar de valor executará a função
+                    if(this.checked){ //se a checkbox estiver habilitada/checada
+                        $btn.disabled = false; //o botão ñ estará desabilitado
+                    } else{
+                        $btn.disabled = true;
+                    }
+                });
+
+                function alternarBtn(){ //alternarBtn - vai sempre verificar a situação da checkbox
+                    //botão fica desabilitado se a checkbox ñ estiver habilitada/checada e vice-versa
+                    $btn.disabled = !$chk.checked;
+                }
+            })()
+
+        </script> 
+    </body>
+</html>
