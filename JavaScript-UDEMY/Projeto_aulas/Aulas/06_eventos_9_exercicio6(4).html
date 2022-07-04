@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+    <style>
+
+        .done{
+            text-decoration: line-through;
+            color: #555;
+        }
+    </style>
+
+</head>
+    <body>    
+        <h1>Curso - JavaScript - Exercício 6</h1>
+            
+            <!-- O cliente pediu p fazer com que, ao clicar num item da lista, seja perguntado ao usuário 
+            se ele deseja excluir aquele item da lista. Se confirmado, efetuar a remoção. -->
+
+        <div class="container">
+
+            <input type="text" id="txtTask">
+            <button id="btn">Cadastrar tarefa</button>
+
+            <ul>
+                <li>Estudar JS - Eventos e DOM</li>
+                <li>Estudar CSS - Flexbox</li>
+                <li>Estudar HTML - Semântica</li>
+            </ul>
+            
+        </div>
+
+        <script> 
+            (function(){
+                'use strict'
+
+                var $ul = document.querySelector('ul');
+                var $lis = $ul.querySelectorAll('li');
+                var $txtTask = document.querySelector('#txtTask');
+                var $btn = document.querySelector('#btn');
+
+                $btn.addEventListener('click', addTask);
+                $txtTask.addEventListener('keyup', function(e){ //ao soltar a tecla do teclado estando no input, 
+                                                                    //quero verificar qual tecla é (quero a tecla ENTER)
+                    // console.log(e.keyCode); //keyCode - nos mostra o código numérico de determinada tecla, cada qual tem seu próprio código 
+                    if(e.keyCode === 13){ //se a tecla solta no teclado for ENTER,
+                        addTask();          //a função addTask é executada
+                    }    
+                })
+
+               $ul.addEventListener('click', function(e){
+                    if(e.target.nodeName === "LI"){ //e.target - é o próprio elemento / nodeName - é p detectar se é uma 'li', ou não é
+                    removeTask(e.target); //p a remoção da 'li' 
+                    } 
+               })
+
+               function removeTask(li){
+                // if(confirm('Deseja excluir o item?')){ //antes de fazer a remoção, a confirmação c o usuário precisa ser feita
+                if(confirm('Deseja excluir a tarefa \n' + li.textContent + '?')){ //aqui mostrará o próprio item na cofirmação antes da exclusão
+                    console.log(li.parentNode); //1º acessar o elemento pai 'ul' p remover o filho 'li', pelo parentNode  
+                    li.parentNode.removeChild(li); //2º remover o filho 'li' pelo elemento pai 'ul' ... É SEMPRE COM ESSA LÓGICA
+               }
+            }
+
+                function addTask(){
+                    var li = document.createElement('li'); //createElement - add um novo elemento ao DOM. 'li' é o elemento 
+                    var text = document.createTextNode($txtTask.value); //createTextNode - cria um texto temporariamente, p depois atrelar ao DOM
+
+                    li.appendChild(text); //coloca o texto temporario dentro da 'li'
+                                                //contudo, está 'li' continua solta na memória, ainda ñ está atrelada ao DOM
+
+                    $ul.appendChild(li); //acrescenta a 'li' ao DOM principal. Ou seja, na 'ul'
+                    
+                    $txtTask.value = ''; //value - é a propriedade p acessar/recuperar ou atribuir um novo valor
+                                           //neste caso, está pegando o valor do input e zerando, p que fique limpo p continuar digitando
+                    $txtTask.focus(); //focus - coloca o foco direto no elemento. Neste caso, dentro do input novo/limpo p continuar digitando                    
+                }
+            })()
+        </script> 
+    </body>
+</html>
