@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+    <body>    
+        <h1>Curso - JavaScript - Exercício</h1>
+            
+            <!-- Criar uma função que recebe um nome completo e retorna este nome formatado,
+            seguindo o exemplo: 'Nathália Miriam Alves' será formatado em: 'Alves, Nathália Miriam'. -->
+
+
+        <script> 
+            var nome = 'Nathália Miriam Alves';
+
+            var nomeFormatado = formatarNome(nome);
+
+            function formatarNome(nome){
+                // return 'Nathália Miriam Alves';
+                // 1º saber qual a posição do último espaço/nome - 2º a partir deste espaço retornar a string/nome final 
+                // 3º concatenar com o restante da string/nome
+
+                var posicaoUltimoEspaço = nome.lastIndexOf(' ');
+                //se a posição do último espaço for menor ou = 0, significa que ñ encontrou nenhum espaço - então, retornar direto o nome
+                if(posicaoUltimoEspaço <= 0){
+                    return nome;
+                }
+                
+                var ultimoNome = nome.slice(posicaoUltimoEspaço + 1); //pegar o último nome - o + 1 é p ñ contar espaço em branco
+                console.log('ultimoNome', ultimoNome);
+
+                var primeiroNome = nome.slice(0, posicaoUltimoEspaço); //pegar primeiro nome
+                console.log('posicaoUltimoEspaço', posicaoUltimoEspaço);
+
+                return ultimoNome + ', ' + primeiroNome;
+            }
+
+                console.log(nomeFormatado);
+        </script> 
+    </body>
+</html>
