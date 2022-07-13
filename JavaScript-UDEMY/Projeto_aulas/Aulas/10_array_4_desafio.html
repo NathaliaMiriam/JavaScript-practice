@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - JavaScript</title>
+
+</head>
+    <body>    
+        <h1>Curso - JavaScript - Desafio</h1> 
+        
+        <!-- Selecionar todos os parágrafos da página e, se tiver mais de 10 palavras, 
+        mostrar as primeiras 10 seguido de reticências. -->
+        
+         
+           <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+           quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+           laborum et dolorum fuga.</p>
+        
+           <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et 
+            quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est 
+            laborum et dolorum fuga.</p> 
+
+
+        <script>
+              var parágrafos = document.querySelectorAll('p');
+
+              for(var i = 0; i < parágrafos.length; i++){
+                parágrafos[i].innerHTML = formataParágrafo(parágrafos[i].innerHTML);
+              }
+
+              function formataParágrafo(texto){
+                var arr = texto.split(' ');
+                console.log(arr);
+
+                if(arr.length > 10){
+                    return arr.slice(0, 10).join(' ') + '...'; //retorna uma array c/ 10 palavras e o join retorna uma string/texto + ...
+                }                                           //isso feito acima é conhecido por: encadear métodos
+
+                return texto;
+              }
+        </script> 
+    </body>
+</html>

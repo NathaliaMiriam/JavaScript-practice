@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>       
+        
+        <script src="beluga.js"></script>
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Exercício</h1>
+        
+        <!-- Mostrar se um aluno foi aprovado ou não utilizando a função calcularMedia().
+        Contudo, se houver pelo menos uma nota zero, reprovar automaticamente. -->
+        
+        
+        <section>
+        	<div class="container">
+	        
+		      	<h2>Média dos Alunos</h2>
+				<table class="table js-tabela">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Nota 1</th>
+							<th>Nota 2</th>
+							<th>Nota 3</th>
+							<th>Nota 4</th>
+							<th>Média</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="aluno" >
+							<td class="aluno-nome">Gertrude</td>
+							<td class="aluno-n1">0</td>
+							<td class="aluno-n2">8.5</td>
+							<td class="aluno-n3">9</td>
+							<td class="aluno-n4">7.5</td>	
+							<td class="aluno-m"></td>
+						</tr>
+
+						<tr class="aluno" >
+							<td class="aluno-nome">Rey</td>
+							<td class="aluno-n1">5</td>
+							<td class="aluno-n2">8.5</td>
+							<td class="aluno-n3">6.5</td>
+							<td class="aluno-n4">7.5</td>
+							<td class="aluno-m"></td>
+						</tr>
+
+						<tr class="aluno" >
+							<td class="aluno-nome">Jessilda</td>
+							<td class="aluno-n1">8</td>
+							<td class="aluno-n2">8.5</td>
+							<td class="aluno-n3">7</td>
+							<td class="aluno-n4">7.5</td>
+							<td class="aluno-m"></td>
+						</tr>
+
+						<tr class="aluno">
+							<td class="aluno-nome">Lindóia</td>
+							<td class="aluno-n1">6.5</td>
+							<td class="aluno-n2">8.5</td>
+							<td class="aluno-n3">0</td>
+							<td class="aluno-n4">7.5</td>
+							<td class="aluno-m"></td>
+						</tr>
+						<tr class="aluno" >
+							<td class="aluno-nome">Creysson</td>
+							<td class="aluno-n1">10</td>
+							<td class="aluno-n2">9.5</td>
+							<td class="aluno-n3">10</td>
+							<td class="aluno-n4">8.5</td>
+							<td class="aluno-m"></td>
+						</tr>
+					</tbody>
+				</table>
+	        	
+        	</div>	
+        </section>
+
+        <script>            
+            (function(){
+                'use strict'
+                var trs = document.querySelectorAll('.js-tabela tbody .aluno');                
+                
+                var x = 0;
+                while(trs[x]){
+                    var linhaAluno = trs[x];  
+                    var tds = linhaAluno.querySelectorAll('td');
+                    var notas = recuperarNumerosDeColunas(tds);
+
+					var mensagem = '';
+					
+					//método some utilizado p verificar se tem alguma nota zero
+					// var temZero = notas.some(function(nota){
+					// 	return nota === 0;
+					// });
+
+                    //mesma função acima, reescrita com arrow functions
+                    var temZero = notas.some( nota => nota === 0 );
+
+
+					//se tiver zero será reprovado, se ñ tiver zero retorna o calculo da média
+					var mensagem = temZero ? 'reprovado' : calcularMedia.apply(this, notas);
+                    
+                    linhaAluno.querySelector('.aluno-m').textContent = mensagem;
+                    x++;
+                }
+                
+                function recuperarNumerosDeColunas(tds){
+                    var x= 0;
+                    var arr = [];
+                    while( tds[x] ){
+                        if( !isNaN( tds[x].textContent ) && tds[x].textContent !== '' ){
+                            arr.push( parseFloat(tds[x].textContent ) );
+                        }
+                        x++;
+                    }
+                    return arr;
+                }
+            })()            
+        </script>        
+    </body>
+</html>
