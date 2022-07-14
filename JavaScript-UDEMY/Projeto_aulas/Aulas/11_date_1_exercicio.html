@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>       
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Exercício</h1>
+        
+        <!-- Fazer uma página que mostre quantos dias faltam p o meu próximo aniversário
+        ou mostre mensagem de parabéns. -->       
+                
+
+        <script>          
+           (function(){
+                var dataAtual = new Date();
+
+                dataAtual.setHours(0);
+                dataAtual.setMinutes(0);
+                dataAtual.setSeconds(0);
+                dataAtual.setMilliseconds(0);
+
+                var anoAtual = dataAtual.getFullYear();
+
+                var dataNiver = new Date(anoAtual, 6, 13);
+
+                var dataAtualTS = dataAtual.getTime(); //TS = TimeStamp
+                var dataNiverTS = dataNiver.getTime();
+               
+                if(dataNiverTS === dataAtualTS){
+                    alert('Parabéns, pelo aniversário');
+                    return; //sai da função
+                }
+
+                if(dataNiverTS < dataAtualTS){ //se o TS da dataNiverTS for < que o da dataAtualTS - significa que o niver passou
+                    dataNiver.setFullYear(++anoAtual); //++anoAtual = acrescenta um ano, que será = próximo ano 
+                    dataNiverTS = dataNiver.getTime(); //pega novo TS
+                }
+
+                //preciso saber qts milliseconds tem um dia p fazer o cálculo - hora * min * seg * milliseconds
+                const UM_DIA_TS = 24 * 60 * 60 * 1000 //é padrão deixar em maiúsculo, pois não sofrerá alteração - const = constante  
+
+                var diferença = dataNiverTS - dataAtualTS; //calcula a diferença 
+
+                console.log(diferença / UM_DIA_TS);  
+           })()
+        </script>        
+    </body>
+</html>

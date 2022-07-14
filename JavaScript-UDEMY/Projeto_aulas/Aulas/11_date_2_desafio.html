@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>       
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Desafio</h1>
+        
+        <!-- Criar uma função que retorne uma data formatada no padrão brasileiro: DD/MM/AAAA. -->
+                
+
+        <script>          
+           (function(){
+                var data = new Date();
+
+                data.setDate(2);
+                data.setMonth(2);                
+
+
+                function formatDate(data){   
+                    //se data.getDate() for < q 10, significa q tem 1 caractere só, e concatena com 0 e, se for > retorna ele mesmo 
+                    var dia = data.getDate() < 10 ? '0' + data.getDate() : data.getDate();
+                
+                    //pega o mês e add + 1
+                    var mes = data.getMonth() + 1;
+
+                    //se o mes for < q 10, significa q é de 1 a 9, e irá concatenar com 0, senão retorna ele mesmo  
+                    mes = mes < 10 ? '0' + mes : mes; 
+
+                    return dia + '/' + mes + '/' + data.getFullYear();
+                }
+
+                console.log(formatDate(data));
+           })()
+        </script>        
+    </body>
+</html>
