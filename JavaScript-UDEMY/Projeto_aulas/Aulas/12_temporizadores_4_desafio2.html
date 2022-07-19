@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>
+        
+        <style>
+           
+        </style>
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Desafio 2</h1>     
+
+        <!-- MOSTRAR CRONÔMETRO: criar uma interface contendo um input text e 3 botões.
+        Ao clicar no primeiro botão deve iniciar o cronômetro. O segundo botão deve 
+        pausar ou continuar. E o terceiro botão deve resetar o cronômetro. -->
+
+        <input type="text" id="cronometro">
+        <button id="iniciar">Iniciar</button>
+        <button id="pausar">Pausar</button>
+        <button id="parar">Parar</button>    
+                
+        <script>
+            (function(){
+
+                var $cronometro = document.querySelector('#cronometro');
+                var $iniciar = document.querySelector('#iniciar');
+                var $pausar = document.querySelector('#pausar');
+                var $para = document.querySelector('#parar');
+
+                $iniciar.addEventListener('click', iniciar);
+                $pausar.addEventListener('click', pausar);
+                $para.addEventListener('click', parar);
+
+
+                var msClickIniciar = 0; //armazena o momento do clique Iniciar - ms = timestamp milliseconds
+
+                function iniciar(){ 
+                    if(rodando) return;
+                    msClickIniciar = Date.now(); //armazena o momento do clique no botão iniciar, utilizando o Date.now
+                    iniciarCronometro(); //inicia o cronometro - abaixo foi criada a função
+                    rodando = true; //cronometro rodando ao clicar em iniciar
+                }
+
+                function iniciarCronometro(tempoDecorrido){ //recebe o tempo decorrido
+                    var _ms = tempoDecorrido || 0; //faz uma verificação e se ñ tiver nada é = 0
+                    intervalo = setInterval(function(){
+                        var msAgora = Date.now(); //dá acesso ao momento em que a função é executada
+                        var diferença = msAgora - msClickIniciar //p saber quanto tempo passou
+                        $cronometro.value = formataMs(diferença + _ms); //chama a fun formataMs passando a diferença + tempo decorrido
+                    }, 100) //intervalo de 100 milliseconds - 10 vezes por segundo
+                } 
+
+                function formataMs(ms){
+                    /*  
+                    essa função precisa retornar:
+                    ms = 900 => 900
+                    ms = 1500 => 1:500
+                    ms = 59000 => 59:000
+                    ms = 61500 => 1:1:500
+                    */
+
+                    if(ms < 1000){
+                        return ms;
+                    } else if(ms < 60000){ //se for <, significa q o ms está entre 1seg. e 1min.
+                        var seg = ms/1000;
+                        seg = parseInt(seg); //converte p nº inteiro
+                        var c = ms - (seg * 1000); //p saber quanto sobrou de centésimos - c = centésimo
+                        return seg + ':' + c;
+                    } else{
+                        var min = ms / ( 60000 );
+                        min = parseInt(min); // aqui é 1 min
+                        var seg = ms / 1000 - (min * 60); //61.5 - 1 * 60 = 1.5
+                        seg = parseInt(seg); //c a conversão ficará 1
+                        var c = ms - (seg * 1000) - ( min * 60 * 1000 );
+                        return min + ':' + seg + ':' + c;
+                    }
+                }
+
+                var msClickPausar = 0; //var q armazena o momento do clique Pausar - ms = timestamp milliseconds
+
+                function pausar(){
+                    if(!$cronometro.value) return; //se ñ tiver valor dentro do input, retorna e nada acontece
+                    if(rodando){ //se estiver rodando
+                        rodando = false; //seta p falso
+                        clearInterval(intervalo); //limpa o intervalo e parar de executar o cronometro
+                        msClickPausar = Date.now(); //recupera e armazena o momento do clique no botão pausar, utilizando o Date.now
+                        //msTempoDecorrido = msTempoDecorrido + tempo q passou entre (msClickPausar - msClickIniciar)
+                        msTempoDecorrido += (msClickPausar - msClickIniciar); //descobre quanto tempo decorreu no cronometro                        
+                    } else{ 
+                        rodando = true; //com ele rodando
+                        msClickIniciar = Date.now(); //cria um novo valor p msClickIniciar e começa a contar novamente
+                        iniciarCronometro(msTempoDecorrido); //chama a função iniciar cronometro novamente passando o tempo decorrido                       
+                    }                     
+                } 
+
+                var intervalo = null; //acesso ao intervalo                
+                var rodando = false; 
+                var msTempoDecorrido = 0; //p saber quanto tempo passou e que está no cronometro
+
+
+                function parar(){
+                    msClickPausar = 0;
+                    msClickIniciar = 0;
+                    msTempoDecorrido = 0;
+                    rodando = false;
+                    clearInterval(intervalo);
+                    $cronometro.value = ''; //limpa o input
+                }
+            })()            
+        </script>        
+    </body>
+</html>

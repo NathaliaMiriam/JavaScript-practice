@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>
+        
+        <style>
+            .banner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                box-shadow: 0 0 0 100px rgba(0, 0, 0, .8);
+                display: none;
+            }
+
+            .banner--close{
+                position: absolute;
+                top:  5px;
+                right: 5px;
+            }
+        </style>
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Exercício</h1>     
+
+        <!-- O cliente pediu p fazer um pop-up bem irritante que PULA na interface do usuário
+        depois de 5 segundos. Este mesmo pop-up deve ser fechado automaticamente após 5 segundos.
+        (mesmo que o usuário ainda estaja lendo). -->  
+
+        <div class="banner">
+            <h2>Banner Irritante</h2>
+            <button class="banner--close">X</button>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                content here', making it look like readable English.</p>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                content here', making it look like readable English.</p>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, 
+                content here', making it look like readable English.</p>
+        </div>     
+                
+        <script>
+            (function(){
+
+                var $banner = document.querySelector('.banner');
+                var $bannerBtn = document.querySelector('.banner--close');
+
+                $bannerBtn.addEventListener('click', escondeBanner);
+
+                var intervaloEsconde = null;
+
+                function mostraBanner(){
+                    $banner.style.display = 'block'; //usa o style p mostrar
+
+                    intervaloEsconde = setTimeout(escondeBanner, 4000); //agendamento p esconder
+                }
+
+                function escondeBanner(){
+                    $bannerBtn.removeEventListener('click', escondeBanner);
+                    $banner.parentNode.removeChild($banner); //vai remover do DOM a partir do elemento pai 'parentNode'
+
+                    clearTimeout(intervaloEsconde); //limpa o intervalo ao clicar no botão X, p que ñ apareça msg de erro
+                }
+
+                setTimeout(mostraBanner, 2000);                
+            })()       
+        </script>        
+    </body>
+</html>

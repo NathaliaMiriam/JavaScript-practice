@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Aula - JavaScript</title>
+       
+
+    </head>
+    <body>
+		<h1>Curso - JavaScript - Desafio 1</h1>     
+
+        <!-- MOSTRAR RELÓGIO: criar uma função que retorne a hora atual no formato hh:mm:ss.
+        Mostrar esse texto numa div qualquer na tela. E executar a função a cada 1 segundo. -->
+
+        <div class="relogio">
+        </div>     
+                
+        <script>
+            (function(){
+
+                var $relogio = document.querySelector('.relogio');
+
+                function getHour(){
+                    var data = new Date();
+                    var hora = formata(data.getHours());
+                    var minuto = formata(data.getMinutes());
+                    var segundo = formata(data.getSeconds());
+
+                    return hora + ':' + minuto + ':' + segundo;
+                }
+
+                function formata(tempo){
+                    //se tempo for < 10 = retorna 0 concatenado com tempo, senão, simplesmente o tempo
+                    return tempo < 10 ? '0' + tempo : tempo;
+                }
+
+                function mostraRelogio(atual){
+                    $relogio.textContent = atual;
+                }
+
+                mostraRelogio(getHour());
+                setInterval(function(){ //atualiza a hora a cada 1 segundo
+                    mostraRelogio(getHour());
+                }, 1000) 
+            })()
+        </script>        
+    </body>
+</html>
